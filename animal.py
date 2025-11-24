@@ -1,9 +1,9 @@
 '''
-File: filename.py
+File: animal.py
 Description: A brief description of this Python module.
-Author: Billy Bizilis
-ID: 110100110
-Username: bizvy001
+Author: Vedanti Ganjale
+ID: 110439713
+Username: ganvy010
 This is my own work as defined by the University's Academic Integrity Policy.
 '''
 
@@ -25,14 +25,16 @@ class Animal:
         self.under_treatment = False
         self.health_issues = []
 
-    def report_health_issue(self, description, severity):
+    def report_health_issue(self, description, severity, treatment_plan=None, notes=None):
         """Add a health issue and mark the animal as under treatment."""
         if severity < 1 or severity > 100:
             raise AnimalError("Severity must be between 1 and 100.")
 
         self.health_issues.append({
             "description": description,
-            "severity": severity
+            "severity": severity,
+            "treatment_plan": treatment_plan,
+            "notes": notes or []
         })
         self.under_treatment = True
 
@@ -50,6 +52,13 @@ class Animal:
 
     def sleep(self):
         return f"{self.name} is sleeping now."
+
+    def get_health_report(self):
+        """Return a summary of health issues for staff checks."""
+        return {
+            "under_treatment": self.under_treatment,  # must match what staff expects
+            "issues": self.health_issues
+        }
 
     def get_info(self):
         """Return simple details about the animal."""
