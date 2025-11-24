@@ -42,7 +42,8 @@ class StaffMember:
     def perform_health_check(self, animal):
         # generic check - veterinarians can call this
         info = animal.get_health_report()
-        print(f"[Staff {self.name}] Health check for {animal.name}: {len(info['issues'])} issues, under_treatment={info['under_treatment']}.")
+        print(
+            f"[Staff {self.name}] Health check for {animal.name}: {len(info['issues'])} issues, under_treatment={info['under_treatment']}.")
         return info
 
 
